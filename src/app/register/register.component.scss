@@ -1,0 +1,71 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo del formulario */
+.container-fluid {
+    background-color: #f5f7fa;
+    height: 100vh;
+}
+
+/* Estilos para la card */
+.card {
+    border-radius: 15px;
+    max-width: 650px;
+    margin: auto;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Feedback de error */
+.invalid-feedback {
+    display: block;
+    font-size: 0.875rem;
+    color: #dc3545;
+}
+
+/* Evita que el input tenga padding extra por el ícono */
+.position-relative .form-control {
+    padding-right: 40px;
+    
+    .eye-btn {
+        position: absolute;
+        right: 10px;
+        /* Alineado al borde derecho del input */
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+}
+
+/* Imagen de la derecha */
+.img-fluid {
+    max-height: 90vh;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+/* Enlaces */
+a {
+    cursor: pointer;
+}
+
+/* Ajusta las etiquetas flotantes al enfocar o ingresar texto */
+.form-floating input:focus+label,
+.form-floating input:not(:placeholder-shown)+label {
+    transform: translateY(-1.5rem);
+    font-size: 0.85rem;
+    opacity: 0.8;
+}

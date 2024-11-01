@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.main {
+  margin: 0;
+  margin-top: 70px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Ocupa el ancho total de la pantalla */
+  height: 100%;
+  box-sizing: border-box; /* Incluye padding y borde en el ancho */
+}
+
+.footer {
+  width: 100%;
+  background-color: #f8f9fa;
+  text-align: center;
+  bottom: 0;
+  position: relative;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}

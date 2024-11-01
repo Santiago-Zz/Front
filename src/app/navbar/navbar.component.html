@@ -1,0 +1,177 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" routerLink="/home">
+            <img class="logo" [src]="isHovered ? '/Logo-black.png' : '/Logo.png'" alt="Casa Comercial Providencia">
+        </a>
+
+        <!-- Botón hamburguesa para dispositivos móviles -->
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú desplegable del navbar -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home">HOME</a>
+                </li>
+
+                <!-- Mega Menú SHOP -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        SHOP
+                    </a>
+                    <ul class="dropdown-menu mega-menu" aria-labelledby="shopDropdown">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Tecnología -->
+                                <div class="col-lg-3 col-md-6">
+                                    <a href="/tecnologia/1" class="text-decoration-none">
+                                        <h6><i class='bx bx-laptop'></i> Tecnología</h6>
+                                        <img src="/Tecnologia.jpg" alt="Tecnología" class="img-fluid rounded shadow">
+                                    </a>
+                                </div>
+                                <!-- Joyeria -->
+                                <div class="col-lg-3 col-md-6">
+                                    <a href="/joyeria/2" class="text-decoration-none">
+                                        <h6><i class='bx bx-diamond'></i> Joyería</h6>
+                                        <img src="/Joyeria.jpg" alt="Joyería" class="img-fluid rounded shadow">
+                                    </a>
+                                </div>
+                                <!-- Herramientas -->
+                                <div class="col-lg-3 col-md-6">
+                                    <a href="/herramientas/3" class="text-decoration-none">
+                                        <h6><i class='bx bx-wrench'></i> Herramientas</h6>
+                                        <img src="/Herramientas.jpg" alt="Herramientas"
+                                            class="img-fluid rounded shadow">
+                                    </a>
+                                </div>
+                                <!-- Accesorios -->
+                                <div class="col-lg-3 col-md-6">
+                                    <a href="/accesorios/4" class="text-decoration-none">
+                                        <h6><i class='bx bxs-watch'></i> Accesorios</h6>
+                                        <img src="/Accesorios.jpg" alt="Accesorios" class="img-fluid rounded shadow">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+
+                <!-- Otros enlaces -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/buy-gold">Compra de oro</a>
+                </li>
+            </ul>
+
+            <!-- Barra de búsqueda -->
+            <form class="d-flex search-form" (ngSubmit)="onSearch()">
+                <input class="form-control me-2" [(ngModel)]="searchQuery" name="search" type="search"
+                    placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-secondary" (click)="onSearch()" type="button">
+                    <i class='bx bx-search'></i>
+                </button>
+            </form>
+
+
+            <!-- Íconos (Carrito y Perfil) -->
+            <div class="navbar-icons">
+                <button class="btn btn-outline-secondary cart-icon" (click)="toggleCart()">
+                    <i class='bx bx-cart'></i>
+                    <span class="badge bg-secondary">{{ cartItems.length }}</span>
+                </button>
+
+                <!-- Ícono de Usuario -->
+                <ng-container *ngIf="isAuthenticated; else loginLink">
+                    <div class="btn-group profile-icon" (click)="toggleUser()">
+                        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class='bx bx-user'></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" routerLink="/profile">Perfil</a></li>
+                            <li><a class="dropdown-item" (click)="logout()">Salir</a></li>
+                        </ul>
+                    </div>
+                </ng-container>
+
+                <!-- Link de login si no está autenticado -->
+                <ng-template #loginLink>
+                    <button class="btn btn-outline-secondary profile-icon" routerLink="/login">
+                        <i class='bx bx-user'></i>
+                    </button>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Sidebar para dispositivos móviles -->
+<div class="sidebar" [class.open]="sidebarOpen">
+    <div class="sidebar-header">
+        <button class="btn-close" (click)="toggleSidebar()">&times;</button>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a routerLink="/home">HOME</a></li>
+        <li><a routerLink="/about">Sobre Nosotros</a></li>
+        <li><a routerLink="/buy-gold">Compra de Oro</a></li>
+        <li>
+            <a (click)="toggleDropdown()">SHOP</a>
+            <!-- Agrega la clase 'open' cuando 'dropdownOpen' es verdadero -->
+            <ul [class.open]="dropdownOpen" class="dropdown-list">
+                <li><a href="/tecnologia/1">Tecnología</a></li>
+                <li><a href="/joyeria/2">Joyería</a></li>
+                <li><a href="/herramientas/3">Herramientas</a></li>
+                <li><a href="/accesorios/4">Accesorios</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="cart-sidebar" [class.open]="cartOpen">
+    <div class="cart-header">
+        <h3>Carrito de Compras</h3>
+        <button class="btn-close-circle" (click)="toggleCart()">&times;</button>
+    </div>
+
+    <!-- Listado de productos -->
+    <div *ngIf="cartItems.length > 0; else emptyCartTemplate" class="cart-items">
+        <div *ngFor="let item of cartItems; let i = index" class="cart-item d-flex align-items-center mb-3">
+            <img [src]="item.image_url" alt="{{ item.name }}" class="cart-item-image me-3">
+            <div class="cart-item-details flex-grow-1">
+                <h6 class="mb-1">{{ item.name }}</h6>
+                <p class="text-muted mb-1">{{ item.price | currency }}</p>
+
+                <!-- Selector de cantidad -->
+                <div class="quantity-control">
+                    <button (click)="decreaseQuantity(i)" class="btn btn-outline-secondary btn-sm">-</button>
+                    <span class="mx-2">{{ item.quantity }}</span>
+                    <button (click)="increaseQuantity(i)" class="btn btn-outline-secondary btn-sm">+</button>
+                </div>
+            </div>
+            <button class="btn btn-outline-danger btn-sm" (click)="removeCartItem(i)">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Plantilla en caso de que el carrito esté vacío -->
+    <ng-template #emptyCartTemplate>
+        <div class="cart-empty text-center">
+            <p>Tu carrito está vacío.</p>
+        </div>
+    </ng-template>
+
+    <!-- Total y botón de Comprar -->
+    <div *ngIf="cartItems.length > 0" class="cart-footer mt-4">
+        <h5>Total: {{ total | currency }}</h5>
+        <button class="btn btn-danger w-100 mt-2" routerLink="/checkout">Comprar</button>
+    </div>
+</div>

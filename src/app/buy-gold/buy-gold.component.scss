@@ -1,0 +1,50 @@
+table.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: #ffc107;
+    color: white;
+}
+
+.table td,
+.table th {
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+img.img-fluid {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+h2,
+h4 {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    color: #ff9800;
+}
+
+h4 {
+    color: #007bff;
+}
+
+.list-group-item {
+    background-color: #f9f9f9;
+    border-left: 5px solid #ffc107;
+}
+
+.list-group-item::before {
+    content: '✔';
+    color: #ffc107;
+    font-weight: bold;
+    margin-right: 10px;
+}

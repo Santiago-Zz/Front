@@ -1,0 +1,59 @@
+<div class="container cart-summary-container">
+    <div class="row align-items-start">
+        <!-- Columna de productos -->
+        <div class="col-lg-8 col-md-12 product-table-container">
+            <h2>Resumen de compras</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Productos</th>
+                        <th>Precios</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of cartItems; let i = index">
+                        <td class="product-column">
+                            <img [src]="product.image_url" alt="{{ product.name }}" class="product-image">
+                            <span class="product-name">{{ product.name }}</span>
+                        </td>
+                        <td>{{ product.price | currency }}</td>
+                        <td class="quantity-column">
+                            <button class="quantity-btn decrease" (click)="decreaseQuantity(i)">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <span class="quantity">{{ product.quantity }}</span>
+                            <button class="quantity-btn increase" (click)="increaseQuantity(i)">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </td>
+                        <td>{{ product.price * product.quantity | currency }}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="removeCart(i)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Columna para el resumen de costos -->
+        <div class="col-lg-4 col-md-12 order-summary-container">
+            <div class="order-summary">
+                <h4>Mi carrito</h4>
+                <div class="summary-details">
+                    <p>Subtotal: <span>{{ subtotal | currency }}</span></p>
+                    <p>Envío gratis: <span>{{ envio | currency }}</span></p>
+                    <hr>
+                    <p class="text-muted">Descuentos</p>
+                    <hr>
+                    <p><strong>Total:</strong> <span><strong>{{ total | currency }}</strong></span></p>
+                </div>
+                <a href="/order-payment" class="btn btn-warning w-100 mt-3">Ir a pagar</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <!-- Imagen representativa de oro -->
+    <div class="text-center">
+        <h2 class="fw-bold text-warning">¡Compramos tu oro al mejor precio!</h2>
+        <img src="/buy-gold.jpg" alt="imagen de oro" class="img-fluid rounded shadow my-3">
+        <h4 class="text-primary">Precios de Compra de Oro</h4>
+    </div>
+    <!-- Tabla de precios editable para el admin -->
+    <div>
+        <table class="table table-bordered text-center mt-4">
+            <thead class="table-warning">
+                <tr>
+                    <th scope="col">Tipo de Oro</th>
+                    <th scope="col">Precio Actual</th>
+                    <!-- Si eres admin, se mostrará una columna para editar precios -->
+                    <th *ngIf="isAdmin" scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let oro of preciosOro">
+                    <td>{{ oro.tipo }}</td>
+                    <!--Los precios se muestran para todos los usuarios-->
+                    <td>{{ oro.precio | currency:'USD':true }}</td>
+                    <!-- Si eres admin, aquí puedes mostrar inputs para editar los precios -->
+                    <td *ngIf="isAdmin">
+                        <input type="number" [(ngModel)]="oro.nuevoPrecio" class="form-control"
+                            placeholder="Nuevo Precio">
+                        <button class="btn btn-success btn-sm mt-2" (click)="updatePrice(oro)">Actualizar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Políticas de Compra -->
+    <div class="mt-5">
+        <h3 class="fw-bold">Políticas de Compra</h3>
+        <p>Para la compra de oro puro o lingotes debe presentar, en cualquiera de nuestras joyerías, los siguientes
+            documentos:</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Certificado de origen del oro</li>
+            <li class="list-group-item">Título minero</li>
+            <li class="list-group-item">RUT con fecha de impresión no mayor a 30 días</li>
+            <li class="list-group-item">Cámara de Comercio no mayor a 30 días</li>
+            <li class="list-group-item">Estados Financieros Firmados y certificados</li>
+            <li class="list-group-item">Declaración de Renta de los 2 últimos años</li>
+        </ul>
+    </div>
+</div>

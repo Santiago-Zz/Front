@@ -1,0 +1,90 @@
+<div class="product-form-container">
+    <h2>{{ isEditMode ? 'Modificar producto' : 'Crear producto' }}</h2>
+    <form (ngSubmit)="addProduct()" [formGroup]="productForm">
+
+        <!-- Campo Nombre del Producto -->
+        <div class="form-group">
+            <label for="name">Nombre del producto:</label>
+            <input id="name" formControlName="name" type="text" class="form-control"
+                [ngClass]="{ 'is-invalid': productForm.get('name')?.invalid && productForm.get('name')?.touched }">
+            <div *ngIf="productForm.get('name')?.errors" class="invalid-feedback">
+                <div *ngIf="productForm.get('name')?.errors?.['required']">El nombre del producto es obligatorio.</div>
+            </div>
+        </div>
+
+        <!-- Precio del producto -->
+        <div class="form-group">
+            <label for="price">Precio del producto</label>
+            <input id="price" formControlName="price" type="number" class="form-control"
+                [ngClass]="{ 'is-invalid': productForm.get('price')?.invalid && productForm.get('price')?.touched }">
+            <div *ngIf="productForm.get('price')?.errors" class="invalid-feedback">
+                <div *ngIf="productForm.get('price')?.errors?.['required']">El precio es obligatorio.</div>
+                <div *ngIf="productForm.get('price')?.errors?.['min']">El precio debe ser mayor o igual a 0.</div>
+            </div>
+        </div>
+
+        <!-- Descripción del producto -->
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea id="description" formControlName="description" class="form-control"
+                [ngClass]="{ 'is-invalid': productForm.get('description')?.invalid && productForm.get('description')?.touched }"></textarea>
+            <div *ngIf="productForm.get('description')?.errors" class="invalid-feedback">
+                <div *ngIf="productForm.get('description')?.errors?.['required']">La descripción es obligatoria.</div>
+            </div>
+        </div>
+
+        <!-- Cantidad -->
+        <div class="form-group">
+            <label for="quantity">Cantidad</label>
+            <input id="quantity" formControlName="quantity" type="number" class="form-control"
+                [ngClass]="{ 'is-invalid': productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched }">
+            <div *ngIf="productForm.get('quantity')?.errors" class="invalid-feedback">
+                <div *ngIf="productForm.get('quantity')?.errors?.['required']">La cantidad es obligatoria.</div>
+                <div *ngIf="productForm.get('quantity')?.errors?.['min']">La cantidad debe ser mayor o igual a 0.</div>
+            </div>
+        </div>
+
+        <!-- Campo Imagen -->
+        <div class="form-group">
+            <label for="image_url">Imagen</label>
+            <input id="image_url" type="file" (change)="onFileChange($event)" class="form-control"
+                [ngClass]="{ 'is-invalid': !selectedFile && productForm.get('image_url')?.touched }">
+            <div *ngIf="!selectedFile && productForm.get('image_url')?.touched" class="invalid-feedback">
+                La imagen es obligatoria.
+            </div>
+        </div>
+
+
+        <!-- Campo Estado -->
+        <div class="form-group">
+            <label for="status">Estado</label>
+            <select id="status" formControlName="status" class="form-control"
+                [ngClass]="{ 'is-invalid': productForm.get('status')?.invalid && productForm.get('status')?.touched }">
+                <option value="Disponible">Disponible</option>
+                <option value="Caducado">Caducado</option>
+            </select>
+            <div *ngIf="productForm.get('status')?.invalid && productForm.get('status')?.touched"
+                class="invalid-feedback">
+                El estado es obligatorio.
+            </div>
+        </div>
+
+        <!-- Campo Categoría -->
+        <div class="form-group">
+            <label for="category_Id">Categoría</label>
+            <input id="category_Id" formControlName="category_Id" type="number" class="form-control"
+                [ngClass]="{ 'is-invalid': productForm.get('category_Id')?.invalid && productForm.get('category_Id')?.touched }">
+            <div *ngIf="productForm.get('category_Id')?.invalid && productForm.get('category_Id')?.touched"
+                class="invalid-feedback">
+                La categoría es obligatoria.
+            </div>
+        </div>
+
+        <!-- Botón Enviar -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-3" [disabled]="productForm.invalid">
+                {{ isEditMode ? 'Modificar' : 'Crear producto' }}
+            </button>
+        </div>
+    </form>
+</div>

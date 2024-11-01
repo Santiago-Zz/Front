@@ -1,0 +1,184 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e2f;
+    color: white;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: #ffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 45%;
+}
+
+.login-form h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.login-form p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #a0a0b1;
+    font-family: 'Arial', sans-serif;
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Arial', sans-serif;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #092565;
+    font-size: 1rem;
+    background-color: #f8f8f9;
+    color: black;
+}
+
+.show-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #a0a0b1;
+    font-size: 1.2rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.actions p {
+    display: contents;
+    font-size: 16px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #08349c;
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.alternative-login {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.alternative-login p {
+    margin-bottom: 18px;
+    color: #a0a0b1;
+}
+
+.social-login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    padding: 2px 2px;
+    transition: background-color 0.3s;
+}
+
+.social-button:hover {
+    background-color: #ddd;
+}
+
+.add-newAccount {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.registration-text {
+    font-size: 1em; /* Tamaño de fuente */
+    margin-bottom: 10px; /* Espacio inferior */
+    color: #333; 
+}
+
+.create-account-button {
+    text-decoration: none; /* Eliminar subrayado */
+    padding: 10px 15px; /* Espaciado interno */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.create-account-button:hover {
+    background-color: #0056b3; /* Cambio de color al pasar el mouse */
+}
+
+.login-image {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-image img {
+    max-width: 80%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .login-form,
+    .login-image {
+        width: 100%;
+    }
+
+    .login-image img {
+        max-width: 100%;
+    }
+}

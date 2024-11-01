@@ -1,0 +1,86 @@
+.product-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    font-family: 'Arial';
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-family: 'Arial';
+    font-weight: bold;
+}
+
+.form-control,
+.form-control-file,
+select {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        background-color: #0056b3;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// Botones de acción
+.btn-primary {
+    background-color: #28a745; // Verde para crear
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+.btn-warning {
+    background-color: #ffc107; // Amarillo para modificar
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545; // Rojo para eliminar
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+// Añadimos un efecto de "click" para hacer que el botón parezca presionado
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

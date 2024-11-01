@@ -1,0 +1,92 @@
+<div class="container mt-5">
+    <!-- Sección de introducción con fondo de color completo -->
+    <section class="intro-section">
+        <div class="intro-content">
+            <div class="intro-left">
+                <h1 class="intro-title">Casa Comercial Providencia</h1>
+                <p class="intro-description">¡Bienvenidos!</p>
+                <p class="intro-description">Explora nuestro contenido para descubrir nuestros servicios, productos y
+                    ubicación.</p>
+                <button class="scroll-button" (click)="scrollToSection()">Ver Servicios</button>
+            </div>
+            <div class="intro-right">
+                <img src="/home.jpg" alt="Logo de la Casa de Empeños" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestros Servicios -->
+    <section id="nuestros-servicios">
+        <div class="container mt-5">
+            <h2 class="text-center mb-5">Nuestros Servicios</h2>
+            <div class="row text-center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-lg border-0">
+                        <div class="service-icon">
+                            <img src="/empeño.jpg" class="card-img-top" alt="Empeñar">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Empeñar</h5>
+                            <p class="card-text">Empeña un objeto de valor y obten dinero rapido y facil.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-lg border-0">
+                        <div class="service-icon">
+                            <img src="/compra.jpg" class="card-img-top" alt="Comprar">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Comprar</h5>
+                            <p class="card-text">Adquiere productos de nuestro negocio, garantizados con la mejor calidad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-lg border-0">
+                        <div class="service-icon">
+                            <img src="/vender.jpg" class="card-img-top" alt="Vender">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Prestamo</h5>
+                            <p class="card-text">Obtén un préstamo dejando un objeto de valor como garantía, con un interés
+                                del 5%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ubicación -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-5">Nuestra Ubicación</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-primary">Visítanos en nuestro negocio principal</h5>
+                <p>Nos encontramos en una ubicación céntrica para que puedas visitarnos y resolver cualquier duda que
+                    tengas. ¡Estaremos encantados de ayudarte!</p>
+                <p><strong>Dirección:</strong> Cl. 68 #64-15, Bogotá</p>
+                <p><strong>Horario:</strong> Lunes a Viernes: 9:00 AM - 7:00 PM, Sábados: 9:00 AM - 6:00 PM, Domingos:
+                    Cerrado</p>
+                <p><strong>Teléfono:</strong> (601) 2402057</p>
+            </div>
+            <div class="col-md-6">
+                <!-- Google Maps con la URL directa de la ubicación -->
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.516340267824!2d-74.08520282676595!3d4.673542585573315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b2f48a31ac5%3A0xa7509c7146e934ea!2sCasa%20Comercial%20Providencia!5e0!3m2!1ses!2sco!4v1698578394382!5m2!1ses!2sco"
+                        width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <button *ngIf="isHome && !cartOpen" class="whatsapp-button">
+        <a href="https://wa.me/3184974871" class="whatsapp-float" target="_blank">
+            <i class="bi bi-whatsapp whatsapp-icon"></i>
+        </a>
+    </button>
+</div>

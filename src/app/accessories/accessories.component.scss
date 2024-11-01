@@ -1,0 +1,99 @@
+.container-fluid {
+    margin: 20px;
+}
+
+/* Ajuste del área de filtros */
+.filters {
+    max-width: 450px;
+    height: 100%; /* Esto asegura que el filtro ocupe todo el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.filters .filter-group {
+    margin-bottom: 20px; /* Asegurar margen entre secciones */
+}
+
+.apply-btn {
+    margin-bottom: 0px; /* Eliminar cualquier margen adicional en el botón */
+}
+
+.filters .filter-group:last-child {
+    margin-bottom: 0px;
+}
+
+/* Espaciado entre el nombre del producto y el precio */
+.d-flex {
+    gap: 10px;
+}
+
+/* Ajuste del diseño de las tarjetas */
+.card {
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-footer {
+    padding: 10px;
+}
+
+.card-img-top {
+    object-fit: contain !important; /* Asegura que la imagen no tenga "zoom" */
+}
+
+/* Botones de acciones para administradores */
+.btn-outline-warning,
+.btn-outline-danger {
+    margin: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-warning:hover {
+    background-color: #dcca06;
+    color: white;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Botón de agregar al carrito */
+.btn-success {
+    margin-top: 10px;
+}
+
+
+/* Controles de filtros y orden */
+#toggleFiltersBtn,
+.dropdown-toggle {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-right: 5px;
+}
+
+#dropdownSortButton {
+    margin-right: 25px; /* Ajusta el valor según lo necesites */
+}
+
+.hidden {
+    display: none !important;  /* Asegurarse de que el contenedor desaparezca completamente */
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .filters {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .products {
+        width: 100%;
+        margin-left: 0;
+    }
+}

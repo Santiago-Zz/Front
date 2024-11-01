@@ -1,0 +1,137 @@
+.container-fluid {
+    margin: 20px;
+}
+
+/* Área de filtros */
+.filters {
+    max-width: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.filters .filter-group {
+    margin-bottom: 20px;
+}
+
+.filters .filter-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Botón de aplicar filtro */
+.apply-btn {
+    margin-bottom: 0;
+}
+
+/* Ajustes de espaciado entre el nombre y el precio del producto */
+.d-flex {
+    gap: 10px;
+}
+
+/* Diseño de las tarjetas de producto */
+.card {
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02); /* Efecto de zoom ligero al pasar el cursor */
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-footer {
+    padding: 10px;
+}
+
+.card-img-top {
+    object-fit: contain !important;
+}
+
+/* Estilos para botones de acciones del administrador */
+.btn-outline-warning,
+.btn-outline-danger {
+    margin: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-warning:hover {
+    background-color: #dcca06;
+    color: white;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Botón de agregar al carrito */
+.btn-success {
+    margin-top: 10px;
+}
+
+/* Controles de filtros y orden */
+#toggleFiltersBtn,
+.dropdown-toggle {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    margin-right: 5px;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#dropdownSortButton {
+    margin-right: 25px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Estilos generales para todos los botones */
+.btn {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: inline-flex !important;
+    align-items: center;
+}
+
+/* Estilo adicional para el texto dentro de los botones */
+.btn i {
+    margin-right: 5px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .filters {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .products {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    /* Ajuste del espacio entre los botones en móviles */
+    #toggleFiltersBtn,
+    .dropdown-toggle {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .apply-btn {
+        width: 100%; /* Botón de aplicar filtro ocupa el ancho completo en móviles */
+    }
+}
+
+/* Ajuste visual en hover */
+.card:hover .card-body {
+    background-color: #f8f9fa;
+}
+

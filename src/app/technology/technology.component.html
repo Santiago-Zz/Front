@@ -1,0 +1,126 @@
+<div class="container-fluid mt-4">
+    <!-- Sección para crear productos (solo para administradores) -->
+    <div *ngIf="isAdmin" class="my-3">
+        <button [routerLink]="['/create-product']" class="btn btn-outline-danger d-flex align-items-center">
+            <i class="bi bi-plus-circle me-2"></i>
+            Crear nuevo producto
+        </button>
+    </div>
+
+    <!-- Sección de filtros y productos -->
+    <div class="row d-flex-wrap">
+        <!-- Controles de filtro y orden, accesible para todos los usuarios -->
+        <div class="col-md-12 d-flex justify-content-end mb-5 gap-2">
+            <!-- Botón para mostrar/ocultar filtros -->
+            <button id="toggleFiltersBtn" class="btn btn-outline-primary d-flex align-items-center" (click)="toggleFilters()">
+                <i class="bi bi-funnel"></i>
+                <span id="filterText" class="ms-2">Mostrar filtros</span>
+            </button>
+        
+            <!-- Dropdown para ordenar productos -->
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center" type="button"
+                    id="dropdownSortButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-sort-down-alt"></i>
+                    <span class="ms-2">Más reciente</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownSortButton">
+                    <li><a class="dropdown-item" (click)="sort('desc')">Precio: alto-bajo</a></li>
+                    <li><a class="dropdown-item" (click)="sort('asc')">Precio: bajo-alto</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Panel de filtros -->
+        <aside class="col-md-3 filters bg-light p-3 shadow-lg rounded" [class.hidden]="!showFilters" id="filterMenu">
+            <h3 class="mb-4">Filtrar</h3>
+            <!-- Filtrar por marcas -->
+            <div class="filter-group mb-4">
+                <h5 class="text-primary">Marcas</h5>
+                <ul class="list-group">
+                    <li *ngFor="let brand of brands" class="list-group-item d-flex justify-content-between align-items-center">
+                        <label class="form-check-label d-flex align-items-center">
+                            <input type="checkbox" class="form-check-input me-2" [value]="brand.name">
+                            {{ brand.name }}
+                        </label>
+                        <span class="badge bg-primary rounded-pill">{{ brand.count }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Filtrar por rango de precios -->
+            <div class="filter-group mb-4">
+                <h5 class="text-primary">Rango de precios</h5>
+                <ul class="list-group">
+                    <li class="list-group-item" (click)="minPrice = 0; maxPrice = 250000; applyPriceFilter()">
+                        $0 - $250.000
+                    </li>
+                    <li class="list-group-item" (click)="minPrice = 250001; maxPrice = 500000; applyPriceFilter()">
+                        $250.000 - $500.000
+                    </li>
+                    <li class="list-group-item" (click)="minPrice = 500001; maxPrice = 1000000; applyPriceFilter()">
+                        $500.000 - $1.000.000
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Rango personalizado -->
+            <div class="filter-group mb-4">
+                <h5 class="text-primary">Rango personalizado</h5>
+                <div class="d-flex mb-2">
+                    <div class="input-group me-2">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" placeholder="Min">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" placeholder="Max">
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100" (click)="applyPriceFilter()">Aplicar</button>
+            </div>
+        </aside>
+
+        <!-- Sección de productos -->
+        <div [ngClass]="{'col-md-12': !showFilters, 'col-md-9': showFilters}">
+            <div class="container mt-5">
+                <div [class.expanded]="!showFilters" class="products">
+                    <!-- Grilla de 3 productos por fila -->
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <!-- Iterar sobre productos -->
+                        <div class="col" *ngFor="let product of products">
+                            <div class="card text-dark bg-white shadow-sm rounded-lg h-100">
+                                <!-- Imagen del producto -->
+                                <div class="overflow-hidden rounded-top" style="height: 180px;">
+                                    <img [src]="product.image_url" alt="{{ product.name }}" class="card-img-top" style="object-fit: contain; width: 100%; height: 100%;">
+                                </div>
+
+                                <!-- Contenido de la tarjeta -->
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2 gap-2">
+                                        <h5 class="card-title mb-0">{{ product.name }}</h5>
+                                        <h5 class="card-title mb-0 text-primary">{{ product.price | currency }}</h5>
+                                    </div>
+                                    <p class="card-text text-muted mt-2">{{ product.description || 'Descripción no disponible.' }}</p>
+                                </div>
+
+                                <!-- Botones para administradores o para añadir al carrito -->
+                                <div class="card-footer bg-white border-0 d-flex justify-content-between">
+                                    <button *ngIf="isAdmin" class="btn btn-outline-warning" [routerLink]="['/edit-product', product.products_Id]">
+                                        <i class="bi bi-pencil-square"></i> Editar
+                                    </button>
+                                    <button *ngIf="isAdmin" class="btn btn-outline-danger" (click)="deleteProduct(product.products_Id)">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                    <button *ngIf="!isAdmin" class="btn btn-success w-100 text-uppercase fw-bold py-2" (click)="addToCart(product)">
+                                        <i class="bi bi-cart-plus me-2"></i> Agregar al carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
